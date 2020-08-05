@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./eventEmitter.js"></script>
+    <script src="./mvvm.js"></script>
+    <script src="./observer.js"></script>
+    <script src="./compiler.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>msg:{{msg}} age:{{age}} </p>
+        <p class="main" v-text="msg"></p>
+        <span>{{age}}   {{  age   }} {{msg}}</span>
+        <div><span>{{age}}</span>   <span>{{age}}</span></div>
+        <input type="text" v-model="msg">
+    </div>
+    <script>
+        const vm = new Mvvm({
+            el: '#app',
+            data:{
+                msg: 'abc',
+                age: 100
+            }
+        })
+        console.log(vm)
+    </script>
+</body>
+</html>
