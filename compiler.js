@@ -92,6 +92,27 @@ Compiler.prototype.compilerElementNode = function (node) {
                 })
             }
 
+            //<p v-show="isSHow">msg:{{msg}} age:{{age}} </p>  =>  <p style="display: none;">msg:1213 age:100</p>
+            if(attrName==='v-show'){
+                let show = ''
+                if(this.$vm.$data[attrValue]){
+                    show = 'block'
+                } else {
+                    show = 'none'
+                }
+                node.setAttribute("style","display: "+show+";");
+                //注册事件
+                ev.$on(attrValue,()=>{
+                    let show = ''
+                    if(this.$vm.$data[attrValue]){
+                        show = 'block'
+                    } else {
+                        show = 'none'
+                    }
+                    node.setAttribute("style","display: "+show+";");
+                })
+            }
+
             //v-model => :value='' @input="func"
             if(attrName==='v-model'){
                 node.value=this.$vm.$data[attrValue]

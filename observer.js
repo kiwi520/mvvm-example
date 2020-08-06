@@ -3,8 +3,11 @@
 
 function Observer(data) {
     this.$data = data
+    console.log(this.$data)
     //处理data
     Object.keys(this.$data).forEach((key) => {
+        console.log(key)
+        console.log(this.$data[key])
         this.defineReactive(this.$data, key, this.$data[key])
     })
 }

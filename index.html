@@ -10,18 +10,20 @@
 </head>
 <body>
     <div id="app">
-        <p>msg:{{msg}} age:{{age}} </p>
+        <p v-show="isSHow">msg:{{msg}} age:{{age}} </p>
         <p class="main" v-text="msg"></p>
         <span>{{age}}   {{  age   }} {{msg}}</span>
         <div><span>{{age}}</span>   <span>{{age}}</span></div>
-        <input type="text" v-model="msg">
+        msg:<input type="text" v-model="msg">
+        age:<input type="text" v-model="age">
     </div>
     <script>
         const vm = new Mvvm({
             el: '#app',
             data:{
                 msg: 'abc',
-                age: 100
+                age: 100,
+                isSHow: true
             }
         })
         console.log(vm)
